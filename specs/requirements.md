@@ -38,3 +38,4 @@
 | 2026-11-23 | [20261123-002](changes/20261123-002-site-identity.md) | REQ-001 | 已验收 |
 | 2026-11-24 | [20261124-001](changes/20261124-001-homepage-redesign.md) | REQ-002 | 已验收（含上线） |
 | 2026-11-24 | [20261124-002](changes/20261124-002-fixed-navbar.md) | REQ-003 | 已验收 |
+| 2026-11-24 | [20261124-003](changes/20261124-003-commit-message-encoding.md) | REQ-003 | 已验收（提交信息乱码修复） |
