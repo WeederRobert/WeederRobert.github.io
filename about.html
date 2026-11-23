@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关于 · WeederRobert 的记事本</title>
+<meta name="description" content="关于这个博客，以及它是怎么做出来的。">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('blog-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    } catch (error) {}
+  })();
+</script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="feed.xml">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header">
+  <a class="brand" href="index.html">WeederRobert 的记事本</a>
+  <nav class="site-nav" aria-label="主导航">
+    <a href="index.html">文章</a>
+    <a href="about.html" aria-current="page">关于</a>
+  </nav>
+  <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换深浅色">☾</button>
+</header>
+<main id="main">
+  <article class="post">
+    <header class="post-header">
+      <h1>关于</h1>
+    </header>
+    <div class="post-body">
+      <p>这里记录工程实践、工具踩坑和读书笔记。写下来的目的很简单：半年后自己还能看懂当时为什么这么决定。</p>
+
+      <h2>这个站点怎么做的</h2>
+      <ul>
+        <li>纯静态 HTML / CSS / JavaScript，没有构建步骤，也没有任何第三方依赖。</li>
+        <li>文章清单由 <code>posts.json</code> 维护，首页用它渲染列表。</li>
+        <li>部署走 GitHub Actions：推送到 <code>main</code> 就发布到 GitHub Pages。</li>
+        <li>深色 / 浅色跟随系统，可手动切换并记住选择（存在本地浏览器里）。</li>
+      </ul>
+
+      <h2>为什么不用框架</h2>
+      <p>博客的复杂度在「持续写」而不在「渲染」。免构建意味着十年后拉下仓库，双击就能改，不依赖某个版本的 Node。</p>
+
+      <h2>联系</h2>
+      <p>可以在 <a href="https://github.com/WeederRobert" rel="me noopener">GitHub</a> 找到我，或通过 <a href="feed.xml">RSS</a> 订阅更新。</p>
+    </div>
+    <footer class="post-footer">
+      <a href="index.html">← 返回文章列表</a>
+    </footer>
+  </article>
+</main>
+<footer class="site-footer page-footer">
+  <span>© <span data-year>2026</span> WeederRobert</span>
+  <span><a href="feed.xml">RSS</a> · <a href="https://github.com/WeederRobert" rel="me noopener">GitHub</a></span>
+</footer>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

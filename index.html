@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WeederRobert</title>
+<meta name="description" content="WeederRobert 的个人主页与博客：工程实践、工具踩坑与读书笔记。">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('blog-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    } catch (error) {}
+  })();
+</script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="feed.xml">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="shell">
+  <div class="home">
+    <aside class="side" aria-label="个人资料">
+      <div class="brandmark" role="img" aria-label="WeederRobert">W</div>
+
+      <section class="card">
+        <h2>现在</h2>
+        <p class="now-row"><span class="ico" aria-hidden="true">🕒</span><span data-local-time>--:--</span></p>
+        <p class="now-row muted" data-timezone>—</p>
+        <p class="now-row"><span class="ico" aria-hidden="true">✍️</span>在写博客与工具</p>
+      </section>
+
+      <section class="card">
+        <h2>标签</h2>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">前端</span>
+          <span class="chip">工具</span>
+          <span class="chip">自动化</span>
+          <span class="chip">写作</span>
+          <span class="chip">中文</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>时间线</h2>
+        <ol class="timeline">
+          <li><span class="dot" aria-hidden="true"></span><time>未来</time><p>继续写下去</p></li>
+          <li><span class="dot" aria-hidden="true"></span><time>2026-11-24</time><p>首页改为个人主页版式</p></li>
+          <li><span class="dot" aria-hidden="true"></span><time>2026-11-23</time><p>博客上线（无构建静态站）</p></li>
+        </ol>
+      </section>
+    </aside>
+
+    <main class="main-col" id="main">
+      <header class="hero">
+        <h1>你好，我是 <span class="grad">WeederRobert</span></h1>
+        <p class="role">🧑‍💻 <strong>全栈练习生</strong> · 工程实践记录者</p>
+        <p class="quote">「先把 <mark class="hl">问题</mark> 写清楚，再写 <mark class="hl">代码</mark>。」</p>
+      </header>
+
+      <nav class="actions" aria-label="站点入口">
+        <a class="btn" href="https://github.com/WeederRobert" rel="me noopener">
+          <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="feed.xml"><span aria-hidden="true">📡</span>RSS</a>
+        <a class="btn" href="about.html"><span aria-hidden="true">✳️</span>关于</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换深浅色">☾</button>
+      </nav>
+
+      <section class="stats" aria-label="站点概况">
+        <span><strong data-article-count>0</strong> 篇文章</span>
+        <span>最近更新 <strong data-last-updated>—</strong></span>
+        <span>纯静态 · 无追踪 · 无第三方脚本</span>
+      </section>
+
+      <section aria-labelledby="posts-heading">
+        <h2 class="section-title" id="posts-heading">文章</h2>
+        <ul class="post-list" data-post-list aria-busy="true"></ul>
+        <noscript>
+          <p class="muted">文章列表需要 JavaScript；也可以直接打开 <a href="posts/hello-world.html">第一篇</a>。</p>
+        </noscript>
+      </section>
+
+      <section aria-labelledby="sites-heading">
+        <h2 class="section-title" id="sites-heading">站点</h2>
+        <div class="link-grid">
+          <a class="link-card" href="https://github.com/WeederRobert" rel="me noopener">
+            <span class="link-title">GitHub</span>
+            <span class="link-sub">代码与提交</span>
+            <span class="link-ico" aria-hidden="true">🐙</span>
+          </a>
+          <a class="link-card" href="about.html">
+            <span class="link-title">关于</span>
+            <span class="link-sub">这个站怎么做的</span>
+            <span class="link-ico" aria-hidden="true">✳️</span>
+          </a>
+          <a class="link-card" href="feed.xml">
+            <span class="link-title">RSS</span>
+            <span class="link-sub">订阅更新</span>
+            <span class="link-ico" aria-hidden="true">📡</span>
+          </a>
+          <a class="link-card" href="https://github.com/WeederRobert/WeederRobert.github.io" rel="me noopener">
+            <span class="link-title">源码</span>
+            <span class="link-sub">本站仓库</span>
+            <span class="link-ico" aria-hidden="true">📦</span>
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="doing-heading">
+        <h2 class="section-title" id="doing-heading">在做的事</h2>
+        <ul class="doing">
+          <li><strong>SDD 规范驱动开发</strong><span>需求 → spec → 变更记录，代码可追溯</span></li>
+          <li><strong>赛马娘简中服助手</strong><span>master.mdb 导入、面板与数据口径</span></li>
+          <li><strong>屏幕 OCR 实验</strong><span>MediaProjection 帧管线与识别</span></li>
+        </ul>
+      </section>
+
+      <footer class="site-footer">
+        <span>© <span data-year>2026</span> WeederRobert</span>
+        <span><a href="feed.xml">RSS</a> · <a href="https://github.com/WeederRobert" rel="me noopener">GitHub</a></span>
+      </footer>
+    </main>
+  </div>
+</div>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

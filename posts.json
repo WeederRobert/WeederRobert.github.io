@@ -1,0 +1,22 @@
+{
+  "site": {
+    "title": "WeederRobert 的记事本",
+    "description": "工程实践、工具踩坑与读书笔记。",
+    "author": "WeederRobert",
+    "github_user": "WeederRobert",
+    "url": "https://weederrobert.github.io"
+  },
+  "posts": [
+    {
+      "slug": "hello-world",
+      "title": "第一篇：为什么用无构建静态站写博客",
+      "date": "2026-11-23",
+      "summary": "GitHub Pages 的纯静态方案：没有构建、没有依赖，只有 HTML、CSS 和一点点 JavaScript。",
+      "tags": [
+        "站点",
+        "静态站"
+      ],
+      "file": "posts/hello-world.html"
+    }
+  ]
+}

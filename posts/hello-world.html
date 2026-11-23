@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第一篇：为什么用无构建静态站写博客 · WeederRobert 的记事本</title>
+<meta name="description" content="GitHub Pages 的纯静态方案：没有构建、没有依赖，只有 HTML、CSS 和一点点 JavaScript。">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('blog-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    } catch (error) {}
+  })();
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../feed.xml">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header">
+  <a class="brand" href="../index.html">WeederRobert 的记事本</a>
+  <nav class="site-nav" aria-label="主导航">
+    <a href="../index.html">文章</a>
+    <a href="../about.html">关于</a>
+  </nav>
+  <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换深浅色">☾</button>
+</header>
+<main id="main">
+  <article class="post">
+    <header class="post-header">
+      <h1>第一篇：为什么用无构建静态站写博客</h1>
+      <p class="post-meta">
+        <time datetime="2026-11-23">2026年11月23日</time>
+        <span class="tag">站点</span>
+        <span class="tag">静态站</span>
+      </p>
+    </header>
+    <div class="post-body">
+      <p>这个博客没有构建步骤：没有 npm，没有 Ruby，没有模板引擎。仓库里就是几个 HTML 文件、一份 CSS、一份 JavaScript，以及一个 <code>posts.json</code>。推送到 <code>main</code>，GitHub Actions 把静态文件发到 Pages。</p>
+
+      <h2>为什么这样选</h2>
+      <p>博客真正的成本在「持续写」，不在「渲染」。一旦引入构建链，两年后想改一篇文章，就得先找回当时那个 Node 版本。静态站把这个问题直接抹掉：只要有浏览器和文本编辑器，就能维护。</p>
+
+      <h2>一份清单，四个产物</h2>
+      <p>文章的唯一事实源是 <code>posts.json</code>。首页列表、RSS、sitemap 都由它推导，避免「首页有、RSS 没有」这类脏数据。新增文章用一条命令：</p>
+      <pre><code>python scripts/new_post.py --title "标题" --slug hello-world --summary "一句话摘要" --tags 随笔</code></pre>
+      <p>脚本会生成文章页骨架，同步 <code>posts.json</code>、<code>feed.xml</code> 和 <code>sitemap.xml</code>，只用 Python 标准库。</p>
+
+      <h2>本地怎么看效果</h2>
+      <p>首页要用 <code>fetch</code> 读取 <code>posts.json</code>，浏览器不允许 <code>file://</code> 这么做，所以本地预览需要起一个静态服务：</p>
+      <pre><code>python -m http.server 8000</code></pre>
+      <p>然后打开 <code>http://localhost:8000</code>。线上由 Pages 提供 HTTP 服务，没有这个问题。</p>
+
+      <h2>取舍</h2>
+      <ul>
+        <li>没有评论和搜索：需要时再按需接入，不默认背上第三方脚本。</li>
+        <li>文章正文是 HTML：写起来比 Markdown 笨一点，但零依赖、首屏无闪白。</li>
+        <li>清单手工/脚本维护：换来的是「打开就能看懂」的仓库结构。</li>
+      </ul>
+
+      <blockquote>能长期维护的方案，通常是最无聊的那个。</blockquote>
+    </div>
+    <footer class="post-footer">
+      <a href="../index.html">← 返回文章列表</a>
+    </footer>
+  </article>
+</main>
+<footer class="site-footer page-footer">
+  <span>© <span data-year>2026</span> WeederRobert</span>
+  <span><a href="../feed.xml">RSS</a> · <a href="https://github.com/WeederRobert" rel="me noopener">GitHub</a></span>
+</footer>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

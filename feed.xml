@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>WeederRobert 的记事本</title>
+    <link>https://weederrobert.github.io/</link>
+    <description>工程实践、工具踩坑与读书笔记。</description>
+    <language>zh-CN</language>
+    <atom:link href="https://weederrobert.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>第一篇：为什么用无构建静态站写博客</title>
+      <link>https://weederrobert.github.io/posts/hello-world.html</link>
+      <guid isPermaLink="true">https://weederrobert.github.io/posts/hello-world.html</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <description>GitHub Pages 的纯静态方案：没有构建、没有依赖，只有 HTML、CSS 和一点点 JavaScript。</description>
+    </item>
+  </channel>
+</rss>
