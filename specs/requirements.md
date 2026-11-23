@@ -12,16 +12,16 @@
 | 状态 | 数量 |
 | --- | --- |
 | draft | 0 |
-| approved | 1 |
-| in-progress | 1 |
-| done | 0 |
+| approved | 0 |
+| in-progress | 0 |
+| done | 2 |
 
 ## 需求登记表
 
 | ID | 标题 | 状态 | 提出 | 验收 | Spec | 变更记录 |
 | --- | --- | --- | --- | --- | --- | --- |
-| REQ-001 | 搭建 GitHub Pages 个人博客 | in-progress | 2026-11-23 | AC-1~AC-8 通过；AC-9 待开启 Pages | [REQ-001-github-io-blog.md](REQ-001-github-io-blog.md) | [001](changes/20261123-001-github-io-blog.md) · [002](changes/20261123-002-site-identity.md) |
-| REQ-002 | 首页改版：仿 xxynet/HomePage 版式 | approved | 2026-11-24 | AC-1~AC-8 | [REQ-002-homepage-redesign.md](REQ-002-homepage-redesign.md) | 待实现 |
+| REQ-001 | 搭建 GitHub Pages 个人博客 | done | 2026-11-23 | AC-1~AC-9 全部通过 | [REQ-001-github-io-blog.md](REQ-001-github-io-blog.md) | [001](changes/20261123-001-github-io-blog.md) · [002](changes/20261123-002-site-identity.md) · [003](changes/20261124-001-homepage-redesign.md) |
+| REQ-002 | 首页改版：仿 xxynet/HomePage 版式 | done | 2026-11-24 | AC-1~AC-8 通过 | [REQ-002-homepage-redesign.md](REQ-002-homepage-redesign.md) | [20261124-001](changes/20261124-001-homepage-redesign.md) |
 
 ## 按主题汇总
 
@@ -35,3 +35,4 @@
 | --- | --- | --- | --- |
 | 2026-11-23 | [20261123-001](changes/20261123-001-github-io-blog.md) | REQ-001 | 部分完成（AC-1~AC-8） |
 | 2026-11-23 | [20261123-002](changes/20261123-002-site-identity.md) | REQ-001 | 已验收 |
+| 2026-11-24 | [20261124-001](changes/20261124-001-homepage-redesign.md) | REQ-002 | 已验收（含上线） |

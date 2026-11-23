@@ -2,6 +2,8 @@
 
 无构建的静态个人博客，托管在 GitHub Pages。只有 HTML / CSS / JavaScript 和一份 `posts.json`。
 
+**线上地址：<https://weederrobert.github.io/>**
+
 - 站点入口：[index.html](index.html)
 - 文章目录：[posts/](posts/)
 - 文章清单：[posts.json](posts.json)（首页、RSS、sitemap 的唯一事实源）

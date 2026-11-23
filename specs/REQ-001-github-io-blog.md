@@ -1,6 +1,6 @@
 # REQ-001 搭建 GitHub Pages 个人博客
 
-- 状态：`in-progress`（AC-1~AC-8 本地实测通过；AC-9 待用户开启 Pages 后关闭）
+- 状态：`done`（AC-1~AC-9 全部通过；线上 <https://weederrobert.github.io/>）
 - 项目：`MyBlog/`
 - 提出：2026-11-23
 - 关联：[README.md](../README.md)
@@ -72,7 +72,7 @@
 
 - GitHub 用户名已确认为 `WeederRobert`：`posts.json` 的 `site.github_user` 是唯一配置源，改身份一律跑 `scripts/set_site.py`，不要手改散落的 URL。
 - 仓库要命名为 `<username>.github.io` 才得到根域名；改成项目仓库也能用，但 URL 带子路径（相对路径已兼容）。
-- AC-9 依赖用户在 GitHub 仓库设置里手动开启 Pages（Source = GitHub Actions），不属于本次代码范围。
+- AC-9 已关闭：仓库 `WeederRobert/WeederRobert.github.io` 已创建，Pages 采用 `build_type=workflow`，`Deploy to GitHub Pages` 成功，首页 200。
 - 文章日期统一 `YYYY-MM-DD`（UTC 日期，不带时间，避免时区歧义）。
 
 ## 9. 变更记录
@@ -81,3 +81,4 @@
 | --- | --- | --- |
 | 2026-11-23 | [20261123-001](changes/20261123-001-github-io-blog.md) | 已验收（AC-1~AC-8 本地实测；AC-9 待用户开启 Pages） |
 | 2026-11-23 | [20261123-002](changes/20261123-002-site-identity.md) | 已验收（身份统一为 WeederRobert，AC-9 状态不变） |
+| 2026-11-24 | [20261124-001](changes/20261124-001-homepage-redesign.md) | AC-9 通过：线上 <https://weederrobert.github.io/> 返回 200 |
