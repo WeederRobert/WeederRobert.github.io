@@ -24,6 +24,8 @@ MyBlog/
 └── specs/             # 需求规范与变更记录（不发布）
 ```
 
+所有页面共用 `.topbar` 顶部固定导航（`position: sticky`，高度由 `--topbar-h` 控制，侧栏粘连偏移也随之计算）。
+
 ## 本地预览
 
 首页用 `fetch` 读 `posts.json`，直接双击 HTML 会被浏览器的同源策略拦截，需要起一个静态服务：
