@@ -13,6 +13,7 @@
    - 用 Python `socket.bind` 在 `127.0.0.1:<port>` 上做端口预检，占用时给中文提示并退出 1；
    - 端口优先级 `--port=N` / `--port N` > `MYBLOG_EDITOR_PORT` > `8765`；
    - `exec "$PY" -u editor/server.py "$@"`：`-u` 防止 stdout 缓冲吞掉带 `?key=` 的链接，`exec` 让 `Ctrl+C` 直接终止服务。
+   - 索引里带可执行位（`100755`），Linux / macOS / WSL 上可直接 `./start-editor.sh`；Windows 上没有执行位概念，用 `bash start-editor.sh`。
 2. 新增 `.gitattributes`：`*.sh text eol=lf`。本机 `core.autocrlf=true`，没有这条规则时下次 checkout 会把脚本写成 CRLF，Git Bash / WSL 直接报 `bad interpreter ^M`。
 3. workflow 的 `rsync` 增加 `--exclude 'start-editor.sh'`，脚本不随站点发布。
 4. `README.md`「本地编辑器」补脚本用法与端口优先级，目录树与发布排除清单同步。
