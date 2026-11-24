@@ -19,6 +19,7 @@ MyBlog/
 ├── posts.json         # 站点信息 + 文章清单
 ├── feed.xml / sitemap.xml / robots.txt
 ├── .nojekyll          # 关闭 Pages 的 Jekyll 处理
+├── start-editor.sh    # 起编辑器的 bash 脚本（不发布）
 ├── editor/            # 本地文章编辑器（不发布）
 ├── scripts/           # blog_core.py + new_post.py / set_site.py（不发布）
 ├── .github/workflows/pages.yml
@@ -46,6 +47,17 @@ cd d:\Workspace\Projects\MyBlog
 python editor/server.py                     # 终端会打印一次性链接 http://127.0.0.1:8765/editor/?key=…
 python editor/server.py --port 8800 --no-browser
 ```
+
+Git Bash / WSL / Linux / macOS 下用等价脚本（会先查 Python 版本与端口占用）：
+
+```bash
+./start-editor.sh                 # 默认 8765
+./start-editor.sh --port 8800     # 换端口
+MYBLOG_EDITOR_PORT=8800 ./start-editor.sh
+```
+
+脚本只做三件事：找 `python3`/`python` 并确认 ≥ 3.11、检查端口是否被占用、`exec python -u editor/server.py "$@"`；
+其余行为（随机 key、浏览器、访问控制）都在 `editor/server.py` 里，不在脚本里重复。
 
 - 正文是 HTML 片段（`<p>` / `<h2>` / `<ul>` / `<pre><code>` / `<blockquote>`）。文件里正文缩进 6 空格，编辑器内按公共缩进去掉显示，保存时恢复，所以「打开再保存」不产生 diff。
 - 预览与保存调用同一个渲染函数（`scripts/blog_core.py` 的 `render_post_page`），预览就是保存后的样子。
@@ -101,7 +113,7 @@ python scripts/new_post.py --title ... --slug ... --dry-run
 3. 仓库 **Settings → Pages → Build and deployment → Source** 选 **GitHub Actions**。
 4. 之后每次 push 到 `main`，[.github/workflows/pages.yml](.github/workflows/pages.yml) 自动发布；首次进度看仓库 Actions 页。
 
-发布内容是仓库里除 `.git` / `.github` / `specs` / `scripts` / `editor` 之外的文件（见 workflow 里的 `rsync` 行），所以规格、脚本与本地编辑器不会出现在站点上。
+发布内容是仓库里除 `.git` / `.github` / `specs` / `scripts` / `editor` / `start-editor.sh` 之外的文件（见 workflow 里的 `rsync` 行），所以规格、脚本与本地编辑器不会出现在站点上。
 
 ## 改成你自己的信息
 

@@ -13,7 +13,7 @@
 | --- | --- |
 | draft | 0 |
 | approved | 0 |
-| in-progress | 0 |
+| in-progress | 1 |
 | done | 4 |
 
 ## 需求登记表
@@ -24,6 +24,7 @@
 | REQ-002 | 首页改版：仿 xxynet/HomePage 版式 | done | 2026-11-24 | AC-1~AC-8 通过 | [REQ-002-homepage-redesign.md](REQ-002-homepage-redesign.md) | [20261124-001](changes/20261124-001-homepage-redesign.md) |
 | REQ-003 | 顶部固定导航栏 | done | 2026-11-24 | AC-1~AC-8 通过 | [REQ-003-fixed-navbar.md](REQ-003-fixed-navbar.md) | [20261124-002](changes/20261124-002-fixed-navbar.md) |
 | REQ-004 | 本地博客文章编辑器（`editor/`） | done | 2026-11-24 | AC-1~AC-16 通过 | [REQ-004-local-post-editor.md](REQ-004-local-post-editor.md) | [20261124-005](changes/20261124-005-local-post-editor.md) |
+| REQ-005 | 编辑器启动脚本（bash） | in-progress | 2026-11-24 | AC-1~AC-8（AC-1/2/4 待 bash 环境） | [REQ-005-start-editor-script.md](REQ-005-start-editor-script.md) | [20261124-006](changes/20261124-006-start-editor-script.md) |
 
 ## 按主题汇总
 
@@ -46,3 +47,4 @@
 | 2026-11-24 | [20261124-003](changes/20261124-003-commit-message-encoding.md) | REQ-003 | 已验收（提交信息乱码修复） |
 | 2026-11-24 | [20261124-004](changes/20261124-004-hero-role-copy.md) | 无（纯文案例外） | 已验收（hero 身份文案） |
 | 2026-11-24 | [20261124-005](changes/20261124-005-local-post-editor.md) | REQ-004 | 已验收（编辑器 + 访问控制） |
+| 2026-11-24 | [20261124-006](changes/20261124-006-start-editor-script.md) | REQ-005 | 部分完成（bash 实跑待在装有 bash 的环境补） |
