@@ -19,7 +19,8 @@ MyBlog/
 ├── posts.json         # 站点信息 + 文章清单
 ├── feed.xml / sitemap.xml / robots.txt
 ├── .nojekyll          # 关闭 Pages 的 Jekyll 处理
-├── scripts/new_post.py
+├── editor/            # 本地文章编辑器（不发布）
+├── scripts/           # blog_core.py + new_post.py / set_site.py（不发布）
 ├── .github/workflows/pages.yml
 └── specs/             # 需求规范与变更记录（不发布）
 ```
@@ -36,7 +37,40 @@ python -m http.server 8000
 # 打开 http://localhost:8000
 ```
 
+## 本地编辑器
+
+`editor/` 是只用标准库的本地网页编辑器：左栏文章列表（可搜索、按标签筛选），右栏改标题 / 日期 / 摘要 / 标签 / 正文，下方按站点真实样式实时预览；保存会一次写回文章 HTML、更新 `posts.json`、重建 `feed.xml` 与 `sitemap.xml`。
+
+```powershell
+cd d:\Workspace\Projects\MyBlog
+python editor/server.py                     # 终端会打印一次性链接 http://127.0.0.1:8765/editor/?key=…
+python editor/server.py --port 8800 --no-browser
+```
+
+- 正文是 HTML 片段（`<p>` / `<h2>` / `<ul>` / `<pre><code>` / `<blockquote>`）。文件里正文缩进 6 空格，编辑器内按公共缩进去掉显示，保存时恢复，所以「打开再保存」不产生 diff。
+- 预览与保存调用同一个渲染函数（`scripts/blog_core.py` 的 `render_post_page`），预览就是保存后的样子。
+- slug 建好之后不可改；删除文章、发布、图片上传都不在编辑器范围内。
+
+### 访问控制（谁能打开）
+
+编辑器会**自己写盘**，所以按「单人本机工具」设计：启动时生成一次性 `key`，只有拿到这个链接的人能用。
+
+| 手段 | 挡住什么 | 挡不住什么 |
+| --- | --- | --- |
+| 只绑定 `127.0.0.1` | 同一局域网 / 外网的其他设备直接连不上，不需要防火墙配合 | 同一台电脑上的其他进程、其他 Windows 账号 |
+| 启动时随机 `key`（`secrets.token_urlsafe`），只在终端打印、不落盘 | 不知道 key 打不开页面、调不到任何 `/api/*`；服务重启后旧链接与旧 Cookie 立即失效 | 你主动把链接发出去，或终端输出被录屏 / 记日志 |
+| 校验通过后下发 `HttpOnly; SameSite=Strict` 会话 Cookie，页面加载后立刻从地址栏抹掉 `?key=` | 第三方站点带不上你的凭证；截图 / 历史记录里不留 key | 同一个浏览器里你自己装的恶意扩展 |
+| 写接口要求同源 `Origin` + `X-Editor: 1` | 别的网页借你的浏览器发 POST 改文章（CSRF） | 本机进程直接用 curl 伪造请求头 |
+| `Host` 只接受 `127.0.0.1` / `localhost` | DNS rebinding：把恶意域名解析到 `127.0.0.1` 再绕过同源 | — |
+
+结论：**它保证「局域网/外网的人进不来、别的网页改不了你的文章、旧链接过期即失效」，不保证「同机其他程序读不到你的草稿」** —— 那需要操作系统账号 / 文件权限或真正的账号体系。
+
+- 撤销访问：重启服务（key 重新生成）；或清掉浏览器里的 `myblog_editor` Cookie。
+- 不要把它暴露到公网：没有登录、没有限速、写盘无二次确认。要远程用，得另做「反向代理 + 认证 + TLS」的方案（另一个 REQ），而不是把端口开出去。
+
 ## 写新文章
+
+用上面的 [本地编辑器](#本地编辑器)，或者走命令行：
 
 ```powershell
 python scripts/new_post.py --title "标题" --slug my-post --summary "一句话摘要" --tags 随笔,工具
@@ -58,7 +92,7 @@ python scripts/new_post.py --title ... --slug ... --dry-run
 ```
 
 手动方式（不用脚本）：复制 `posts/hello-world.html`，改标题与日期，再同步 `posts.json`、`feed.xml`、`sitemap.xml`。
-脚本依赖 Python 3.9+ 与标准库，不需要 `uv` 或任何第三方包。
+脚本依赖 Python 3.11+（用到 `datetime.UTC`）与标准库，不需要 `uv` 或任何第三方包；编辑器也一样。
 
 ## 部署
 
@@ -67,7 +101,7 @@ python scripts/new_post.py --title ... --slug ... --dry-run
 3. 仓库 **Settings → Pages → Build and deployment → Source** 选 **GitHub Actions**。
 4. 之后每次 push 到 `main`，[.github/workflows/pages.yml](.github/workflows/pages.yml) 自动发布；首次进度看仓库 Actions 页。
 
-发布内容是仓库里除 `.git` / `.github` / `specs` / `scripts` 之外的文件（见 workflow 里的 `rsync` 行），所以规格与脚本不会出现在站点上。
+发布内容是仓库里除 `.git` / `.github` / `specs` / `scripts` / `editor` 之外的文件（见 workflow 里的 `rsync` 行），所以规格、脚本与本地编辑器不会出现在站点上。
 
 ## 改成你自己的信息
 
