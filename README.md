@@ -7,7 +7,7 @@
 - 站点入口：[index.html](index.html)
 - 文章目录：[posts/](posts/)
 - 文章清单：[posts.json](posts.json)（首页、RSS、sitemap 的唯一事实源）
-- 需求与变更记录：[specs/REQ-001-github-io-blog.md](specs/REQ-001-github-io-blog.md)
+- 需求与变更记录：[specs/requirements.md](specs/requirements.md)（登记表 + 每条 REQ 的 spec 与 `specs/changes/`）
 
 ## 目录
 
