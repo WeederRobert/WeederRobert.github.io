@@ -11,7 +11,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from new_post import FEED, ROOT, SITEMAP, build_feed, build_sitemap, load_manifest, save_manifest, write_xml
+from blog_core import FEED, ROOT, SITEMAP, build_feed, build_sitemap, load_manifest, save_manifest, write_xml
 
 ROBOTS = ROOT / "robots.txt"
 README = ROOT / "README.md"

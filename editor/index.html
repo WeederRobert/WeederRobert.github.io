@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyBlog 编辑器</title>
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+<header class="bar">
+  <span class="brand">MyBlog 编辑器</span>
+  <span class="site" data-site>—</span>
+  <span class="status" data-status>就绪</span>
+  <span class="grow"></span>
+  <a class="btn ghost" data-page-link href="#" target="_blank" rel="noopener" hidden>打开页面 ↗</a>
+  <button class="btn ghost" type="button" data-toggle-preview aria-pressed="true">预览</button>
+  <button class="btn ghost" type="button" data-new>新建</button>
+  <button class="btn primary" type="button" data-save>保存 <kbd>Ctrl+S</kbd></button>
+</header>
+
+<main class="layout">
+  <aside class="side">
+    <input class="search" data-search type="search" placeholder="搜索标题 / 摘要 / 标签" aria-label="搜索文章">
+    <div class="chips" data-chips aria-label="按标签筛选"></div>
+    <ul class="list" data-list></ul>
+  </aside>
+
+  <section class="work">
+    <form class="fields" data-form autocomplete="off" onsubmit="return false">
+      <label class="field"><span>标题</span><input data-field="title" type="text"></label>
+      <label class="field"><span>slug</span><input data-field="slug" type="text" placeholder="lower-case-with-hyphens"></label>
+      <label class="field small"><span>日期</span><input data-field="date" type="date"></label>
+      <label class="field small"><span>标签</span><input data-field="tags" type="text" placeholder="逗号分隔"></label>
+      <label class="field wide"><span>摘要</span><textarea data-field="summary" rows="2"></textarea></label>
+    </form>
+
+    <div class="toolbar" role="toolbar" aria-label="插入 HTML 片段">
+      <button type="button" data-insert="p">段落</button>
+      <button type="button" data-insert="h2">小标题</button>
+      <button type="button" data-insert="ul">列表</button>
+      <button type="button" data-insert="pre">代码块</button>
+      <button type="button" data-insert="quote">引用</button>
+      <button type="button" data-insert="link">链接</button>
+      <button type="button" data-insert="img">图片</button>
+      <span class="hint">正文是 HTML 片段；保存时按站点格式重新排版，缩进自动处理</span>
+    </div>
+
+    <div class="split" data-split>
+      <textarea class="body" data-field="body" spellcheck="false" aria-label="正文 HTML"></textarea>
+      <iframe class="preview" data-preview title="预览" sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+  </section>
+</main>
+
+<div class="toast" data-toast role="status" hidden></div>
+<script src="editor.js"></script>
+</body>
+</html>
