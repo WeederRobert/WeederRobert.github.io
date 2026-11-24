@@ -28,6 +28,7 @@ jobs:
             --exclude 'specs' \
             --exclude 'scripts' \
             --exclude 'editor' \
+            --exclude 'start-editor.sh' \
             ./ _site/
       - uses: actions/configure-pages@v5
         with:
